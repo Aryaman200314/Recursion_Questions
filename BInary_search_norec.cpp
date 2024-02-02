@@ -3,7 +3,7 @@ using namespace std;
 int Search(int arr[], int size, int key)
 {
     int start = 0 , end = size -1;
-    int mid = (start+end)/2;
+    int mid = start+(end-start)/2;
     while(start<=end)
     {
         if(arr[mid]==key)
@@ -18,7 +18,8 @@ int Search(int arr[], int size, int key)
         {
             end  =  mid -1;
         }
-        mid = (start+end)/2;
+        mid = start+(end-start)/2; // THis step is beacuse the start and end value has been changes because we are moving to new place that so we need 
+                                // find the mod again .
     }
     return -1;
 }
