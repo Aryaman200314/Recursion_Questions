@@ -84,16 +84,121 @@
 // }
 
 
+// #include<iostream>
+// using namespace std;
+// void square(int *p){
+//  int a = 10;
+//  p = &a;
+//  *p = (*p) * (*p);
+// }
+
+// int main(){
+//  int a = 10;
+//  square(&a);
+//  cout << a << endl;
+// }
+
+
+// #include <iostream>
+// using namespace std;
+// int main() {
+//     // Null Pointer 
+//     int * ptr = NULL;
+//     cout << "The value of ptr is " << ptr;
+//     return 0;
+// }
+
+
+//DOUBLE POINTER
+// #include <iostream>
+// using namespace std;
+// int main()
+// {
+//     int a = 10;
+//     int *ptr = &a;
+//     int **ptrr = &ptr;
+//     cout << "Value of a" << a << endl;
+//     cout << "This is the address of a" << &a << endl;
+//     cout << "This will also print the value of a " << *ptr << endl;
+//     cout << "This will also print the address of a " << ptr << endl;
+//     cout << "This will also print the value of a" << **ptrr << endl;
+//     cout << "This will also print the address  of pointer ptr " << ptrr << endl;
+// }
+
+
+
+
+// #include<iostream>
+// using namespace std;
+// void swap (char *x, char *y) 
+// {
+//   char *t = x;
+//   x = y;
+//   y = t;
+// }
+
+// int main()
+// {
+//    char *x = "ninjasquiz";
+//    char *y = "codingninjas";
+//    char *t;
+//    swap(x, y);
+//    cout<<x << " "<<y;
+//    t = x;
+//    x = y;
+//    y = t; 
+//    cout<<" "<<x<< " "<<y;
+//    return 0;
+// }
+
+// #include <iostream>
+// using namespace std;
+// int f(int x, int *py, int **ppz)
+// {
+//     int y, z;
+//     **ppz += 1;
+//     z = **ppz;
+//     *py += 2;
+//     y = *py;
+//     x += 3;
+//     return x + y + z;
+// }
+
+// int main()
+// {
+//     int c, *b, **a;
+//     c = 4;
+//     b = &c;
+//     a = &b;
+//     cout << f(c, b, a);
+//     return 0;
+// }
+
+
+
+// #include<iostream>
+// using namespace std;
+// int main()
+// {
+//   int ***r, **q, *p, i=8;
+//   p = &i;
+//   (*p)++;
+//   q = &p;
+//   (**q)++;
+//   r = &q;
+//   cout<<*p << " " <<**q << " "<<***r;
+//   return 0;
+// }
+
 #include<iostream>
 using namespace std;
-void square(int *p){
- int a = 10;
- p = &a;
- *p = (*p) * (*p);
+void increment(int **p){
+  (**p)++;
 }
 
 int main(){
- int a = 10;
- square(&a);
- cout << a << endl;
+ int num = 10;
+ int *ptr = &num;
+ increment(&ptr);
+ cout << num << endl;
 }
