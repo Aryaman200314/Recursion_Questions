@@ -1,1 +1,5 @@
-arr+1
+ // Hero(int health)
+    // {
+    //     value=health;
+    //     cout<<value<<endl;
+    // }
