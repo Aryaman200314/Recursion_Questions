@@ -4,7 +4,7 @@ using namespace std;
 class Node{
     public:
     int data;
-    Node* next;
+    Node* next; //This is node type pointer 
 
     //condtructor
     Node(int next)
