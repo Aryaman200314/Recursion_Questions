@@ -17,6 +17,19 @@ class Node{
         // giving Next pointer null value
         this->NextNode =  NULL;
     }
+
+
+    // destructor
+    ~Node()
+    {
+        int value =  this->data;
+        if(NextNode != NULL)
+        {
+        delete NextNode;
+        NextNode = NULL;
+        }
+        cout<< "memory deleted for value" << value << endl;
+    }
 };
 
 void Print(Node* head)
@@ -48,33 +61,119 @@ int GetLengthList(Node* head){
 
 void InsertAtHead(int d, Node* &head)
 {
+    if(head==NULL)
+    {
+        Node* temp = new Node(d);
+        head = temp;
+    }
+    else
+    {
     //Making an temp node that will store the data d and will make an new node named as temp
     Node* temp = new Node(d); // this only line will create an new node the way it creates the node is written in constructor above 
     temp->NextNode = head;
     head->PrevNode = temp;
     head = temp;
+    }
 }
 
-void InsetAtTail(int d, Node* &tail)
+void InsertAtTail(int d, Node* &tail)
 {
+    if(tail==NULL)
+    {
+        Node* temp = new Node(d);
+        tail = temp;
+    }
+    else{
     //Making an temp node that will store the data d and will make an new node named as temp
     Node* temp = new Node(d);   // this only line will create an new node the way it creates the node is written in constructor above 
     tail->NextNode = temp;
     temp->PrevNode = tail;
     tail = temp;
+    }
 }
 
+void InsertAtPosition( int d, int pos, Node* &head, Node* &tail){
+    // insert at the start
+    if(pos==1)
+    {
+        InsertAtHead(d, head);
+        return;
+    }
+    else{
+        Node* temp = head;
+        int cnt = 1;
+        
+        // This loop is to traverse through the list to reach the element before the 
+        // insert position
+        // temp is the node which will be usedd to access the node which is after the insertion position
+        while(cnt<pos-1)
+        {
+            temp = temp->NextNode;
+            cnt++;
+        }
+
+        // if the position is last 
+        if(temp->NextNode == NULL)
+        {
+        InsertAtTail(d, tail);
+        return;
+        }
+
+        else{
+        // Now if the position in inbetween somewhere 
+
+        // create an new node 
+        Node* NodeToInsert = new Node(d);
+        NodeToInsert->NextNode = temp->NextNode;
+        temp->NextNode->PrevNode = NodeToInsert;
+        temp->NextNode = NodeToInsert;
+        NodeToInsert->PrevNode = temp;
+        }
+    }
+}
+
+
+void Deletion(int pos, Node* &head){
+    if(pos == 1){
+        Node* temp = head;
+        temp->NextNode->PrevNode = NULL;
+        head=temp->NextNode;
+        temp->NextNode=NULL;
+        delete temp;
+    }
+    else
+    {
+        // for last and in between 
+        Node* current = head;
+        Node* prev = NULL;
+
+        int cnt = 1;
+        while(cnt<pos)
+        {
+            prev = current;
+            current = current->NextNode;
+            cnt++;
+        }
+        current->PrevNode = NULL;
+        prev->NextNode = current->NextNode;
+        current->NextNode = NULL;
+        
+        delete current;
+    }
+}
 
 int main()
 {
     // make an new node of Node type 
     // after this creation this will call the constructor 
-    // the value 10 will be passes as an argument that will hwlp to make an new node 
+    // the value 10 will be passes as an argument that will hwlp to make an new node  
     Node* node1 = new Node(10);
     // This is making an Node type head node and giving it the vlue of node1 
     // this will be the head of out linkked list  
-    Node* head = node1;
-    Node* tail = node1;
+     Node* head = node1;
+     Node* tail = node1;
+    // Node* head = NULL;
+    // Node* tail = NULL;
     Print(head);
 
     // cout<<GetLengthList(head);
@@ -85,6 +184,12 @@ int main()
     // Print(head);
     InsertAtHead(40, head);
     Print(head);
-    InsetAtTail(69, tail);
+    InsertAtTail(69, tail);
+    InsertAtTail(79, tail);
+    Print(head);
+    InsertAtPosition(99, 3, head, tail);
+    Print(head);
+    InsertAtPosition(100, 8, head, tail);
+    InsertAtPosition(900, 1, head, tail);
     Print(head);
 }
