@@ -1,1 +1,2 @@
-NextNode
+
+class smartPhone{
