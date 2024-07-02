@@ -2,7 +2,7 @@
 #include<stack>
 using namespace std;
 int main(){
-    stack<int> st;
+    stack<in5t> st;
     st.push(2);
     st.push(3);
     st.push(4);
@@ -21,3 +21,5 @@ int main(){
     
     return 0;
 }
+
+
