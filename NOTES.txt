@@ -1,2 +1,22 @@
-Vid 44
-Linked list 
+Video: 67
+Binary tree
+
+Node 
+root
+Children
+Parent 
+Sibling
+Ancestor 
+Desendent - all the Children after this node 
+Leaf - node with no child
+
+
+
+BINARY TREE
+Every Node in this has atmost 2 children
+What is inside an node
+Node {
+    int data;
+    node* left;
+    node* right;
+}
