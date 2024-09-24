@@ -7,7 +7,7 @@ class Node{
     Node* next; //This is node type pointer 
 
     //condtructor
-    Node(int next)
+    Node(int data)
     {
         this -> data = data;
         this -> next = NULL;
