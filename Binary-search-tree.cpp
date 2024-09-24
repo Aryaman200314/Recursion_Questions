@@ -33,8 +33,8 @@ Node* insertDataBST(Node* root, int d){
 void takeInput(Node* &root){
 	int data;
 	while(data!=-1){
-		root = insertDataBST(root, data);
 		cin>> data;
+		root = insertDataBST(root, data);
 	}
 }
 
